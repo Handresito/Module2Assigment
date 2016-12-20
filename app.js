@@ -10,9 +10,14 @@
     ShoppingCheckOffController1.$inject = ['ShoppingCheckOffService']
     function ShoppingCheckOffController1(ShoppingCheckOffService){
         var vm = this;
+        vm.itemName = "";
+        vm.itemQuantity = "";
         vm.items = ShoppingCheckOffService.getToBuyItems();
         vm.removeItem = function(indexItem){
             ShoppingCheckOffService.removeItem(indexItem);
+        };
+        vm.addItem = function(){
+            ShoppingCheckOffService.addItem(vm.itemName, vm.itemQuantity);
         }
     };
 
@@ -20,6 +25,9 @@
     function ShoppingCheckOffController2(ShoppingCheckOffService){
         var vm = this;
         vm.items = ShoppingCheckOffService.getBoughtItems();
+        vm.giveBack = function(indexItem){
+            ShoppingCheckOffService.giveBack(indexItem);
+        };
     };
 
     function ShoppingCheckOffService(){
@@ -49,6 +57,22 @@
 
         service.boughtItems = [];
 
+        service.addItem = function (itemName, itemQuantity){
+            var name = itemName.trim();
+            var quantity = itemQuantity.trim();
+            if(name !== "" && quantity !== ""){
+                var item = {
+                name: itemName,
+                quantity: itemQuantity
+                }
+            service.toBuyItems.push(item);
+            }else{
+                alert('Insert data properly.')
+                return;
+            }
+            
+        }
+
         service.getToBuyItems = function(){
             return service.toBuyItems;
         };
@@ -64,6 +88,15 @@
             }
             service.boughtItems.push(item);
             service.toBuyItems.splice(indexItem, 1);
+        };
+
+        service.giveBack = function(indexItem){
+            var item = {
+                name: service.boughtItems[indexItem].name,
+                quantity: service.boughtItems[indexItem].quantity
+            }
+            service.toBuyItems.push(item);
+            service.boughtItems.splice(indexItem, 1);
         };
     };
 })();

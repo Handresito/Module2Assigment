@@ -9,8 +9,12 @@
 
         <div ng-controller="ShoppingCheckOffController1 as toBuyList">
             <h3>To Buy List</h3>
+            New Item:
+            <input type="text" ng-model="toBuyList.itemName" placeholder="Item Name">
+            <input type="text" ng-model="toBuyList.itemQuantity" placeholder="Item Quantity">
+            <button ng-click="toBuyList.addItem()">Add</button>
             <ol>
-                <div ng-if="toBuyList.items.length == 0">Everything is bought!</div>
+                <span ng-if="toBuyList.items.length == 0">Everything is bought!</span>
                 <li ng-repeat="item in toBuyList.items">
                     Buy {{item.quantity}} of {{item.name}}
                     <button ng-click="toBuyList.removeItem($index)">Bought</button>
@@ -21,9 +25,10 @@
         <div ng-controller="ShoppingCheckOffController2 as boughtList">
             <h3>Already Bought List</h3>
             <ol>
-                <div ng-if="boughtList.items.length == 0">Nothing bought yet!</div>
+                <span ng-if="boughtList.items.length == 0">Nothing bought yet!</span>
                 <li ng-repeat="item in boughtList.items">
                     Bought {{item.quantity}} {{item.name}}
+                    <button ng-click="boughtList.giveBack($index)">Give back!</button>
                 </li>
             </ol>
         </div>
