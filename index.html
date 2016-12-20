@@ -28,6 +28,7 @@
             <ol>
                 <span ng-if="boughtList.items.length == 0">Nothing bought yet!</span>
                 <li ng-repeat="item in boughtList.items">
+                    
                     Bought {{item.quantity}} {{item.name}}
                     <button ng-click="boughtList.giveBack($index)">Give back!</button>
                 </li>
