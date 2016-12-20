@@ -18,6 +18,9 @@
         };
         vm.addItem = function(){
             ShoppingCheckOffService.addItem(vm.itemName, vm.itemQuantity);
+        };
+        vm.deleteItem = function(index){
+            ShoppingCheckOffService.deleteItem(index)
         }
     };
 
@@ -71,6 +74,10 @@
                 return;
             }
             
+        }
+
+        service.deleteItem = function(indexItem){
+            service.toBuyItems.splice(indexItem,1);
         }
 
         service.getToBuyItems = function(){
