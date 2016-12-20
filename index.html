@@ -17,7 +17,7 @@
                 <span ng-if="toBuyList.items.length == 0">Everything is bought!</span>
                 <li ng-repeat="item in toBuyList.items">
                     Buy {{item.quantity}} of {{item.name}}
-                    <button ng-click="toBuyList.removeItem($index)">Bought</button>
+                    <button ng-click="toBuyList.removeItem($index)">Buy it!</button>
                     <button ng-click="toBuyList.deleteItem($index)">Delete</button>
                 </li>
             </ol>
