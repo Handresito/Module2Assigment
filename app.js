@@ -18,6 +18,8 @@
         };
         vm.addItem = function(){
             ShoppingCheckOffService.addItem(vm.itemName, vm.itemQuantity);
+            vm.itemName = "";
+            vm.itemQuantity = "";
         };
         vm.deleteItem = function(index){
             ShoppingCheckOffService.deleteItem(index)
