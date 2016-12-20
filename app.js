@@ -50,7 +50,7 @@
                 quantity: 10
             },
             {
-                name: "Watermelon",
+                name: "Rice",
                 quantity: 8
             },
             {
