@@ -77,6 +77,7 @@
         }
 
         service.deleteItem = function(indexItem){
+            console.log("delete item");
             service.toBuyItems.splice(indexItem,1);
         }
 
