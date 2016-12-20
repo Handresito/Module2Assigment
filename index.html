@@ -1,4 +1,4 @@
-<html>
+<html ng-app="ShoppingCheckOffApp">
     <head>
         <title>Module 2 Assignment</title>
         <script src="angular.min.js"></script>
@@ -7,15 +7,25 @@
     <body>
         <h1>Shopping List Check Off</h1>
 
-        <div ng-controller="ShoppingCheckOffController1">
+        <div ng-controller="ShoppingCheckOffController1 as toBuyList">
             <h3>To Buy List</h3>
             <ol>
-                <li ng-repeat="item in items">
+                <div ng-if="toBuyList.items.length == 0">Everything is bought!</div>
+                <li ng-repeat="item in toBuyList.items">
                     Buy {{item.quantity}} of {{item.name}}
+                    <button ng-click="toBuyList.removeItem($index)">Bought</button>
                 </li>
             </ol>
         </div>
 
-        <div></div>
+        <div ng-controller="ShoppingCheckOffController2 as boughtList">
+            <h3>Already Bought List</h3>
+            <ol>
+                <div ng-if="boughtList.items.length == 0">Nothing bought yet!</div>
+                <li ng-repeat="item in boughtList.items">
+                    Bought {{item.quantity}} {{item.name}}
+                </li>
+            </ol>
+        </div>
     </body>
 </html>
