@@ -29,6 +29,7 @@
     ShoppingCheckOffController2.$inject = ['ShoppingCheckOffService']
     function ShoppingCheckOffController2(ShoppingCheckOffService){
         var vm = this;
+        
         vm.items = ShoppingCheckOffService.getBoughtItems();
         vm.giveBack = function(indexItem){
             ShoppingCheckOffService.giveBack(indexItem);
